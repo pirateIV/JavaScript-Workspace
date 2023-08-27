@@ -1,0 +1,20 @@
+[
+  {
+    "author": "Benjamin",
+    "admin": true,
+    "points": 50,
+    "text": "Learning path to JavaScript"
+  },
+  {
+    "author": "Smith",
+    "admin": false,
+    "points": 30,
+    "text": "JavaScript Object Notation Course"
+  },
+  {
+    "author": "Kunle",
+    "admin": true,
+    "points": 250,
+    "text": "AJAX and XHR Methods "
+  }
+]
