@@ -1,0 +1,95 @@
+* {font-family: 'JetBrains Mono';}
+html, body {margin: 0; padding: 0;}
+html {
+  font-size: 10px;
+  background-color: #a9a9a9;
+}
+
+body {
+  width: 70%;
+  margin: auto;
+}
+
+/* || typography */
+h1 {
+  font-size: 4rem;
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px 2px #333;
+}
+h2 {
+  font-size: 3rem;
+  text-align: center;
+}
+h3 {
+  font-size: 2.2rem;
+}
+p, li {
+  font-size: 1.5rem;
+  line-height: 1.5;
+}
+
+/* || header layout */
+header {
+  margin-bottom: 10px;
+}
+
+nav, article, aside, footer {
+  background-color: white;
+  padding: 1%;
+}
+
+nav {
+  height: 50px;
+  background-color: #ff80ff;
+  display: flex;
+}
+
+nav ul {
+  padding: 0;
+  list-style-type: none;
+  flex: 2;
+  display: flex;
+  align-items: center;
+}
+
+nav li {
+  display: inline;
+  flex: 1;
+}
+
+nav form {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 2em;
+}
+
+input{
+  height: 32px;
+}
+input[type="search"]{
+  height: 32px;
+}
+input[type="submit"]{
+  flex: 1;
+  margin-left: 1rem;
+  border: 0;
+  color: white;
+  background-color: #333;
+}
+
+/* main - layout */
+
+main {
+  display: flex;
+}
+
+article {
+  flex: 4;
+}
+
+aside {
+  flex: 1;
+  margin-left: 10px;
+}
