@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aria</title>
+
+  <style>
+    html, body, * {
+      font-family: 'Georgia', sans-serif;
+    }
+
+    div {
+      color: yellow;
+      display: inline-block;
+      width: 7rem;
+      text-align: center;
+      background-color: #242424;
+      padding: 3px 0;
+      border-radius: 4px;
+      cursor: pointer;
+      box-shadow: 1px 2px 1px lightgray;
+    }
+
+    div:focus {
+      box-shadow: inset 1px 1px 3px white;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Aria div Buttons</h2>
+
+  <div data-message="This is the first message" role="button" tabindex="0">Click me!</div>
+  <div data-message="This is the second message" role="button" tabindex="0">Click me too!</div>
+  <div data-message="This is the third message" role="button" tabindex="0">And me!</div>
+  
+  <script src="script.js"></script>
+</body>
+</html>

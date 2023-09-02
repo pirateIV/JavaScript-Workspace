@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
         output.innerHTML = JSON.stringify(data, null, 2);
       })
       .catch((error) => {
-        output.innerHTML = `Error: ${error.message}`;
+        output.innerHTML = `Error: ${ error.message}`;
       });
   });
 
