@@ -5,23 +5,26 @@
 // Two algorithms
 
 // 1. Depth First Traversal - Stack
-  // add to the top and remove top as well
+// add to the top and remove top as well
 
 
 // 2. Breadth First Traversal = Queue
-  // add from the back and remove from the front
+// add from the back and remove from the front
 
-const depthFirstPrint = ( graph, sourceNode ) => {
-  const stack = [ sourceNode ] ;
+const {
+  log
+} = console
 
-  while ( stack.length > 0 ) {
+const depthFirstPrint = (graph, source) => {
+  const stack = [source]
+
+
+  while (stack.length > 0) {
     const current = stack.pop()
-    console.log(current)
-    for ( let neighbour of  graph[current] ) {
-      stack.push( neighbour )
-    }
+    log(current)
+    for (let neighbour of graph[current]) {}
   }
-};
+}
 
 
 const graph = {
