@@ -1,0 +1,116 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blurring Loading</title>
+</head>
+
+<style>
+    
+  *{font-weight: bolder;padding: 0;}
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    font-family: 'the sans mono-';
+  }
+
+
+  main {
+    width: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #aaa;
+    box-shadow: 1px 2px 1px #bbb;
+  }
+
+   .task {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* width: 90%; */
+    margin:0 auto;
+    list-style: none;
+    border: 1px solid #aaa;
+    padding: 5px;
+    margin: 3px 0;
+  }
+
+  .task li {
+    list-style: none;
+  }
+
+
+  input {
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid rgb(88, 129, 213);
+    margin: 20px;
+  }
+  .cancel {
+    color: red;
+    cursor: pointer;
+    font-size: 18px;
+  }
+
+  button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    border: 0;
+    cursor: pointer;
+    background-color: rgb(88, 129, 213);
+  }
+</style>
+<body>
+
+  <!-- Save Items to Local Storage -->
+
+  <main id="app" role="application">
+    <div class="card" id="card">
+      <h1 class="task-title">
+        Add to Task
+      </h1>
+      <hr>
+
+      <input type="text" placeholder="add items...">
+
+      <div id="task-list">
+        <ul class="task">
+          <li class="task-name">Going to school</a>
+          <li class="cancel" id="cancel">x</a>
+        </ul>
+        <ul class="task">
+          <li class="task-name">Going to school</a>
+          <li class="cancel" id="cancel">x</a>
+        </ul>
+        <ul class="task">
+          <li class="task-name">Going to school</a>
+          <li class="cancel" id="cancel">x</a>
+        </ul>
+        <ul class="task">
+          <li class="task-name">Going to school</a>
+          <li class="cancel" id="cancel">x</a>
+        </ul>
+        <ul class="task">
+          <li class="task-name">Going to school</a>
+          <li class="cancel" id="cancel">x</a>
+        </ul>
+        <ul class="task">
+          <li class="task-name">Going to school</a>
+          <li class="cancel" id="cancel">x</a>
+        </ul>
+        <ul class="task">
+          <li class="task-name">Going to school</a>
+          <li class="cancel" id="cancel">x</a>
+        </ul>
+      </div>
+      <button id="addItems">ADD ITEMS</button>
+    </div>
+  </main>
+  
+  <script src="script.js"></script>
+</body>
+</html>
