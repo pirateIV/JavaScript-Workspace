@@ -1,0 +1,47 @@
+
+form {
+  width: 370px;
+  border: 1px solid #ccc;
+  padding: 0.5rem 0.9rem;
+  margin: auto;
+  border-radius: 10px;
+}
+
+form * {
+  display: flex;
+  width: 350px;
+  margin: 20px 0;
+}
+
+form input {
+  padding: 0.5rem 0.5rem 0.5rem;
+  border: 1px solid #aaa;
+}
+
+form input[type="file"] {
+  padding-bottom: 30px;
+}
+form input[type="submit"] {
+  width: 100%;
+  display: block;
+  color: white;
+  cursor: pointer;
+  background-color: rgb(15, 109, 136);
+}
+.userinfo {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: #333;
+  position: absolute;
+  top: 40px;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#user-profile {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}

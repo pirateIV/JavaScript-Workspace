@@ -4,14 +4,38 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      *{font-family: 'Rubik';}
+    </style>
+
+
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <h1><u>Form Validation Example</u></h1>
 
-    <div class="errors" role="alert">
-      <ul></ul>
-
-      
+    <div class="userinfo">
+      <img src="" alt="" id="user-profile">
     </div>
+
+   <form role="form">
+
+      <h3>Registration</h3>
+      
+      <input type="text" placeholder="Enter name" id="username" autocomplete="username" required>
+
+      <input type="email"  placeholder="Enter email" id="useremail" autocomplete="email" required>
+
+      <input type="password" data-name="password" id="password" autocomplete="new-password" placeholder="Enter password">
+      
+      
+      <!-- File System -->
+      <input type="file" id="fileInput">
+
+      <input type="submit" value="Submit">
+   </form>
+
+   <script src="app.js"></script>
   </body>
 </html>
+ 

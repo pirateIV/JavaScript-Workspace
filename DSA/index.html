@@ -1,0 +1,116 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // Notification System using Pub/Sub Pattern
+
+    const notificationSystem = {
+      events: {},
+      subscribe(event, callback) {
+        if (!this.events[event]) this.events[event] = [];
+        this.events[event].push(callback);
+      },
+      publish(event, data) {
+        if (this.events[event]) {
+          this.events[event].forEach(callback => callback(data));
+        }
+      },
+    };
+
+    // User Interface (UI) Module
+    const uiModule = {
+      init() {
+        // Subscribe to the 'newNotification' event
+        notificationSystem.subscribe('newNotification', this.displayNotification);
+      },
+      displayNotification(message) {
+        const notificationElement = document.createElement('div');
+        notificationElement.classList.add('notification');
+        notificationElement.textContent = message;
+        document.body.appendChild(notificationElement);
+
+        // Automatically remove the notification after 3 seconds
+        setTimeout(() => {
+          document.body.removeChild(notificationElement);
+        }, 3000);
+      },
+    };
+
+    // Example usage:
+    uiModule.init(); // Initialize the UI module
+
+    // Simulate events that trigger notifications
+    setTimeout(() => {
+      notificationSystem.publish('newNotification', 'Welcome to our website!');
+    }, 1000);
+
+    setTimeout(() => {
+      notificationSystem.publish('newNotification', 'You have a new message.');
+    }, 4000);
+  </script>
+  <!-- what are data structures and algorithms ? 
+
+    1. Data Structures are a way to organize and store date effectively. They defined how data is stored, accessed and manipulated
+    2. Algorithms are step-by-step instructions for solving a particular problem. They specify the logic for performing a task
+
+  -->
+
+
+  <!-- Why DSA Matters:
+
+    Efficient data structures and algorithms are essential for optimizing code, improving performance, and solving complex problems.
+    They are used in a wide range of applications, from simple data storage to advanced artificial intelligence.
+    
+  -->
+
+  <!-- Examples:
+
+    Data Structures: Arrays, linked lists, stacks, queues, trees, graphs, hash tables, heaps, etc.
+    Algorithms: Sorting (e.g., bubble sort, merge sort), searching (e.g., binary search), graph traversal (e.g., DFS, BFS), dynamic programming, and more
+  . -->
+  <!-- <script src="array & linked list/script.js"></script> -->
+  <!-- <script>
+    // Published Subscriber Pattern
+
+    const notificationSystem = {
+      events: {},
+      subscribe(event, callback){
+        if(!this.events[event]) this.events[event] = []
+        this.events[event].push(callback)
+      },
+      publish(event, data) {
+        if(this.events[event]) {
+          this.events.forEach(callback => callback(data))
+        }
+      },
+     }
+
+    //  UI Module
+    const uiModule = {
+      init() {
+        // Subscribe to the new notification event
+        notificationSystem.subscribe('newNotification', this.displayNotification)
+      },
+      displayNotification(message) {
+        const notificationEl = document.createElement('div')
+        noticationEl.classList.add('notification')
+        noticationEl.textContent = message
+        document.body.appendChild(notificationEl)
+      }
+    }
+
+    uiModule.init()
+
+    setTimeout(() => {
+      notificationSystem.publish('newNotification', 'Welcome to our website')
+    }, 3000)
+  </script> -->
+</body>
+
+</html>
