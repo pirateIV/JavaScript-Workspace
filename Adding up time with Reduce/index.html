@@ -69,7 +69,7 @@
       <li data-time="6:03">Video 55</li>
       <li data-time="12:39">Video 56</li>
       <li data-time="1:56">Video 57</li>
-      <li data-time="4:05">Video 58</li>
+      <li data-time="4:01">Video 58</li>
     </ul>
     <!-- <script src="script.js"></script> -->
     <script>
@@ -78,26 +78,11 @@
       const seconds = timeNodes
         .map(node => node.dataset.time)
         .map(timeCode => {
-        //  const [min, secs] = timeCode.split(':').map(str => {
-        //   return parseFloat(str)
-        //  })
-        const [min, secs] = timeCode.split(':').map(parseFloat)
-         return (min * 60) + secs
-         console.log(min, secs)
+          const [mins, secs] = timeCode.split(':').map(parseFloat);
+          return mins * 60 + secs;
         })
-        .reduce((total, vidSecs) => total + vidSecs)
+        .reduce((total, vidSecs) => total + vidSecs);
 
-        let secondsLeft = seconds;
-        const hours = Math.floor(secondsLeft / 3600)
-
-        secondsLeft = secondsLeft % 3600
-        // console.log(secondsLeft)
-        const mins = Math.floor(secondsLeft / 60)
-        secondsLeft = secondsLeft % 60
-
-        console.log(hours, mins, secondsLeft)
-
-   
       console.log(seconds);
     </script>
   </body>

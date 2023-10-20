@@ -1,0 +1,41 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<style>
+  .seat {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+        width: 25px;
+    height: 25px;
+    /* border: 1px solid black; */
+    text-align: center;
+    line-height: 50px;
+    margin: 5px;
+    border-radius: 50%;
+  }
+  .class {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 10px;
+    width: 80%;
+    margin:30px auto;
+    place-items: center;
+
+  }
+</style>
+<body>
+
+  <div id="booked"></div>
+
+  <div class="class" id="firstClassSeats"></div>
+  <div class="class" id="businessClassSeats"></div>
+  <div class="class" id="economyClassSeats"></div>
+  
+  <script src="script.js"></script>
+</body>
+</html>

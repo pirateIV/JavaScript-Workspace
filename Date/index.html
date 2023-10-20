@@ -1,0 +1,33 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script src="example.js"></script>
+
+  <script>
+    // Date difference
+
+    const now  = new Date(Date.now())
+    const when =  new Date('2023/01/22')
+
+    const nowInMillisecs = now.getTime()
+    const whenInMillisecs = when.getTime()
+
+    const dateDifference = nowInMillisecs - whenInMillisecs
+    const days = Math.floor((dateDifference / (1000 * 60 * 60 * 24)))
+    
+    console.log('Days difference', days)
+
+    
+    
+
+    // function getDayDifference (){
+    //   no
+    // }
+  </script>
+</body>
+</html>
