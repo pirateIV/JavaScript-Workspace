@@ -1,1 +1,67 @@
-c
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <style>
+    #list > li:not(#disabled) {
+      color: green;
+    }
+  </style>
+  <body>
+    <!-- <ul id="list">
+      <li>OFF</li>
+      <li>OFF</li>
+      <li>OFF</li>
+      <li>OFF</li>
+      <li>OFF</li>
+      <li>OFF</li></ul> -->
+    <!-- <div id="wrapper">
+      <input type="text" value="OFF" readonly />
+      <button type="button">Click Me</button>
+    </div> -->
+    <ul id="list">
+      <li id="item1">Item 1</li>
+      <li id="item2">Item 2</li>
+      <li id="disabled">Disabled Item</li>
+      <li id="item3">Item 3</li>
+    </ul>
+
+    <button onclick="changeListItemsText()">Change  TExt</button>
+
+    <script>
+      
+      function changeListItemsText() {
+        const list = document.querySelectorAll('#list > li:not(#disabled)')
+        console.log(list)
+
+      }
+    </script>
+    <!-- <script>
+
+      const listItems = document.querySelectorAll('ul li')
+
+      function handleOver (e) {
+        let oldText = e.target.innerText;
+        return e.target.innerText = oldText === "ON" ? "OFF" : "ON"
+      }
+      if(listItems.length > 1) {
+        listItems.forEach((listItem) => listItem.addEventListener('mouseover', handleOver))
+      } 
+    </script> -->
+    <!-- <script>
+      const inputElem = document.querySelector('input')
+      const buttonElem = document.querySelector('button')
+
+      buttonElem.addEventListener('click', () => {
+        const oldText = inputElem.value
+        return inputElem.value = oldText === "ON" ? "OFF" : "ON"
+      })
+    </script> -->
+
+    <script src="script.js"></script>
+  </body>
+</html>
