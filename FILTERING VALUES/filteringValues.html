@@ -24,17 +24,18 @@
         'Cathy',
       ];
 
-      searchKeyWords.map(keyword => {
-        const word = document.createElement('li');
-        word.innerText = keyword;
-        wordListOutout.appendChild(word);
+      searchKeyWords.map(word => {
+        const newWord = document.createElement('li');  
+        newWord.innerText = word;
+        // wordListOutout.appendChild(word);
+        wordListOutout.insertBefore(newWord, wordListOutout.lastChild)
       });
 
       const words = document.querySelectorAll('#words-list li');
       words.forEach(word => {
         searchInput.addEventListener('keyup', () => {
-          let keyword = searchInput.value;
-          if (word.textContent.toLowerCase().startsWith(keyword)) {
+          let searchTerm = searchInput.value.toLowerCase();
+          if (word.textContent.toLowerCase().startsWith(searchTerm)) {
             wordListOutout.appendChild(word)
             // word.removeAttribute('hidden', '')
             // word.style.display = 'block'
@@ -43,7 +44,6 @@
             // word.setAttribute('hidden', '')
             // word.style.display = 'none'
           }
-          
         });
       });
       // console.log(words)
