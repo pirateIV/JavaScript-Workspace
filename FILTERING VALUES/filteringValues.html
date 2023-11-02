@@ -11,7 +11,7 @@
 
     <script>
       const searchInput = document.getElementById('searchInp');
-      const wordListOutout = document.getElementById('words-list')
+      const wordListOutout = document.getElementById('words-list');
 
       const searchKeyWords = [
         'benjamin',
@@ -24,16 +24,29 @@
         'Cathy',
       ];
 
-      searchKeyWords.map((keyword) => {
-        const word = document.createElement('li')
-        word.innerText = keyword
-        wordListOutout.appendChild(word)
-      })
+      searchKeyWords.map(keyword => {
+        const word = document.createElement('li');
+        word.innerText = keyword;
+        wordListOutout.appendChild(word);
+      });
 
-      searchInput.addEventListener('keyup', ()=> {
-        let keyword = searchInput.value
-        console.log(keyword)
-      })
+      const words = document.querySelectorAll('#words-list li');
+      words.forEach(word => {
+        searchInput.addEventListener('keyup', () => {
+          let keyword = searchInput.value;
+          if (word.textContent.toLowerCase().startsWith(keyword)) {
+            wordListOutout.appendChild(word)
+            // word.removeAttribute('hidden', '')
+            // word.style.display = 'block'
+          } else {
+            wordListOutout.removeChild(word)
+            // word.setAttribute('hidden', '')
+            // word.style.display = 'none'
+          }
+          
+        });
+      });
+      // console.log(words)
     </script>
   </body>
 </html>
