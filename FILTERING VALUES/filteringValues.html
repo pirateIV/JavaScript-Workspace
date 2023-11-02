@@ -1,0 +1,39 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="search" id="searchInp" autocomplete="false" />
+
+    <ul id="words-list"></ul>
+
+    <script>
+      const searchInput = document.getElementById('searchInp');
+      const wordListOutout = document.getElementById('words-list')
+
+      const searchKeyWords = [
+        'benjamin',
+        'chris',
+        'smith',
+        'simon',
+        'benny',
+        'bunmi',
+        'christopher',
+        'Cathy',
+      ];
+
+      searchKeyWords.map((keyword) => {
+        const word = document.createElement('li')
+        word.innerText = keyword
+        wordListOutout.appendChild(word)
+      })
+
+      searchInput.addEventListener('keydown', ()=> {
+        let keyword = searchInput.value
+        console.log(keyword)
+      })
+    </script>
+  </body>
+</html>
