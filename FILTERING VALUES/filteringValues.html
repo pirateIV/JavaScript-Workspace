@@ -34,7 +34,7 @@
       const words = document.querySelectorAll('#words-list li');
       words.forEach(word => {
         searchInput.addEventListener('keyup', () => {
-          let searchTerm = searchInput.value.toLowerCase();
+          let searchTerm = searchInput.value.toLowerCase().trim();
           if (word.textContent.toLowerCase().startsWith(searchTerm)) {
             wordListOutout.appendChild(word)
             // word.removeAttribute('hidden', '')
