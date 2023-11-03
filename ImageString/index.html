@@ -6,7 +6,12 @@
 <button onclick="convertImageToBinary()">Convert to Binary</button>
 
 
-<img src="" alt="" id="image">
+<img src="" alt="" width="100" id="image">
+<br>
+<br>
+<br>
+
+<textarea name="" id="imgStringOutput" cols="30" rows="10"></textarea>
 
 <script>
   function convertImageToBinary() {
@@ -16,9 +21,10 @@
 
       reader.onload = function (e) {
         var binaryString = e.target.result;
-        console.log(binaryString)
         
         image.src =  binaryString
+        imgStringOutput.innerText = binaryString
+
       };
 
       reader.readAsDataURL(input.files[0]);
