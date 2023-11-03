@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<input type="file" id="inputFile">
+<button onclick="convertImage()">Convert Image</button>
+
+<script>
+function convertImage() {
+  const input = document.getElementById('inputFile');
+
+  if (input.files && input.files[0]) {
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+      const img = new Image();
+      img.src = e.target.result;
+
+      img.onload = function() {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = this.naturalWidth;
+        canvas.height = this.naturalHeight;
+        ctx.drawImage(this, 0, 0);
+
+        const base64String = canvas.toDataURL('image/jpeg').replace('data:image/jpeg;base64,', '');
+
+        // Use the base64String as needed, such as sending it to the server or displaying it in the console
+        console.log(base64String);
+      };
+    };
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+</script>
+
+</body>
+</html>

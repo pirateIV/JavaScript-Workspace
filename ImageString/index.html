@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<input type="file" id="imageInput" accept="image/*">
+<button onclick="convertImageToBinary()">Convert to Binary</button>
+
+
+<img src="" alt="" id="image">
+
+<script>
+  function convertImageToBinary() {
+    var input = document.getElementById('imageInput');
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        var binaryString = e.target.result;
+        console.log(binaryString)
+        
+        image.src =  binaryString
+      };
+
+      reader.readAsDataURL(input.files[0]);
+    } else {
+      console.error('No file selected.');
+    }
+  }
+</script>
+
+</body>
+</html>
