@@ -6,7 +6,7 @@
 <button onclick="convertImageToBinary()">Convert to Binary</button>
 
 
-<img src="" alt="" width="100" id="image">
+<img src="" alt="" width="700" id="image">
 <br>
 <br>
 <br>
@@ -23,11 +23,13 @@
         var binaryString = e.target.result;
         
         image.src =  binaryString
+        console.log(binaryString)
         imgStringOutput.innerText = binaryString
 
       };
 
       reader.readAsDataURL(input.files[0]);
+      console.log(input.files)
     } else {
       console.error('No file selected.');
     }

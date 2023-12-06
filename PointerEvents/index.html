@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ambient Notification Project</title>
+  <style>
+    body {
+      font-family: 'DejaVu Sans', sans-serif;
+      text-align: center;
+      margin: 50px;
+      /* background-color: #111; */
+      /* color-scheme: light dark;
+      color: white; */
+      height: calc(100vh + 150px);
+      /* position: relative; */
+    }
+
+    h1 {
+      margin-bottom: 2.9rem;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .content {
+      position: relative;
+      width: 100%;
+      height: calc(100vh + 200px);
+    }
+
+    input {
+      padding: 14px 20px;
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    input,
+    input::placeholder,
+    button,
+    label {
+      font-weight: 600;
+      font-family: 'DejaVu Sans';
+    }
+
+    label {
+      /* color: rgb(0, 0, 0); */
+      text-shadow: 0px 1px 0px rgb(215, 218, 218);
+      /* font-weight: 500; */
+    }
+
+    #boughtItems,
+    #unboughtItems {
+      position: absolute;
+      right: 10px;
+      top: 30px;
+    }
+
+    #unboughtItems {
+      left: 10px;
+      right: auto;
+    }
+
+    #list,
+    #list2 {
+      width: 230px;
+      border: 2px solid;
+      text-align: start;
+      padding: 6px;
+      display: flex;
+      gap: 2px;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    #list *,
+    #list2 * {
+      border: 1px solid gray;
+      background-color: lightgray;
+      display: flex;
+      align-items: center;
+      height: 33.6px;
+      padding: 0 5px;
+      margin: 0;
+    }
+
+    span {
+      color: orangered;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- <h1>Ambient Notification Project</h1> -->
+  <h1>Market Produce</h1>
+
+  <label for="itemInput">Item to Search:</label>
+  <input type="text" id="itemInput" placeholder="Enter item">
+
+  <label for="listInput">List of Items (add to <span>Bought Items </span> list):</label>
+
+  <input type="text" id="listInput" placeholder="Enter items">
+
+  <!-- <button id="activateButton">Activate Ambient Notification</button> -->
+  <button id="activateButton">add to Bought items list</button>
+
+  <div class="content">
+    <h3>Click each item: (to buy or unbuy)</h3>
+
+    <div id="boughtItems">
+      <h3>Bought Items</h3>
+      <div id="list"></div>
+    </div>
+    <div id="unboughtItems">
+      <h3>UnBought Items</h3>
+      <div id="list2"></div>
+    </div>
+  </div>
+
+  <script>
+    let marketProduce = [
+      'Apples',
+      'Bananas',
+      'Oranges',
+      'Strawberries',
+      'Blueberries',
+      'Grapes',
+      'Watermelon',
+      'Tomatoes',
+      'Cucumbers',
+      'Carrots',
+      'Lettuce',
+      'Bell Peppers',
+      'Spinach',
+      'Broccoli',
+      'Avocados',
+      'Pineapples',
+      'Mangoes',
+      'Potatoes',
+      'Onions',
+    ];
+
+    // let boughtItems = []
+    let unboughtItems = [...marketProduce]
+
+    const searchMarketProduce = (items) => ({
+      contains: item => items.filter(searchTerm => searchTerm.toLowerCase() !== item.toLowerCase())
+    })
+
+    // unboughtItems = searchMarketProduce(unboughtItems).contains('Onions')
+    // unboughtItems = searchMarketProduce(unboughtItems).contains('Carrots')
+    // unboughtItems = searchMarketProduce(unboughtItems).contains('Spinach')
+    // unboughtItems = searchMarketProduce(unboughtItems).contains('Avocados')
+    // unboughtItems = searchMarketProduce(unboughtItems).contains('Potatoes')
+    unboughtItems = searchMarketProduce(unboughtItems).contains('Pineapples')
+
+    console.log(unboughtItems)
+
+    const getBoughtItems = marketProduce.filter(produce => {
+      return unboughtItems.indexOf(produce) === -1
+    })
+    console.log(getBoughtItems)
+    getBoughtItems.map((item) => {
+      document.getElementById('list').innerHTML += `<p>${item}</p>`
+    })
+    unboughtItems.map((item) => {
+      document.getElementById('list2').innerHTML += `<p>${item}</p>`
+    })
+  </script>
+
+  <script>
+    // Simulated functions and objects for demonstration purposes
+    // const searchableCollection = items => ({
+    //   contains: item => items.includes(item),
+    // });
+
+    // const ambientNotification = {
+    //   isActive: () => false, // Simulating an inactive notification
+    //   activate: () => {
+    //     alert('Ambient Notification Activated!');
+    //   },
+    // };
+
+    // const client = {
+    //   isAmbientSupported: () => true, // Simulating ambient support
+    //   alwaysTryAmbientAnyways: () => false, // Simulating a condition
+    // };
+
+    // // Event listener for button click
+    // document.getElementById('activateButton').addEventListener('click', () => {
+    //   // Get values from input fields
+    //   const theStuffYouWant = document.getElementById('itemInput').value;
+    //   const allYourStuff = document.getElementById('listInput').value.split(',').map(item => item.trim());
+
+    //   // Checking conditions
+    //   if (
+    //     searchableCollection(allYourStuff).contains(theStuffYouWant) &&
+    //     !ambientNotification.isActive() &&
+    //     (client.isAmbientSupported() || client.alwaysTryAmbientAnyways())
+    //   ) {
+    //     ambientNotification.activate();
+    //   }
+    // });
+  </script>
+
+</body>
+
+</html>
