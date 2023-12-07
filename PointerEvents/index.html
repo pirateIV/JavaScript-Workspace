@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A little crud market list app">
   <title>Ambient Notification Project</title>
   <style>
     body {
@@ -11,8 +12,8 @@
       text-align: center;
       margin: 50px;
       /* background-color: #111; */
-      /* color-scheme: light dark;
-      color: white; */
+      /* color-scheme: light dark; */
+      /* color: white; */
       height: calc(100vh + 150px);
       /* position: relative; */
     }
@@ -25,6 +26,15 @@
       padding: 10px 20px;
       font-size: 16px;
       cursor: pointer;
+    }
+
+    input:focus {
+      outline: 2px solid lightslategray;
+    }
+
+    button:hover {
+      /* border-style: dashed; */
+      outline: 2px lightslategray solid;
     }
 
     label {
@@ -49,6 +59,7 @@
     button,
     label {
       font-weight: 600;
+      transition: 0.3s ease-in-out;
       font-family: 'DejaVu Sans';
     }
 
@@ -70,10 +81,10 @@
       right: auto;
     }
 
-    #list,
-    #list2 {
+    #unboughtItemsList,
+    #boughtItemsList {
       width: 230px;
-      border: 2px solid;
+      border: 2px solid rgba(120, 136, 153, 0.4);
       text-align: start;
       padding: 6px;
       display: flex;
@@ -82,8 +93,8 @@
       justify-content: space-between;
     }
 
-    #list *,
-    #list2 * {
+    #unboughtItemsList *,
+    #boughtItemsList * {
       border: 1px solid gray;
       background-color: lightgray;
       display: flex;
@@ -94,7 +105,11 @@
     }
 
     span {
-      color: orangered;
+      color: rgb(92, 5, 184);
+    }
+
+    .h3 {
+      font-size: 18px !important;
     }
   </style>
 </head>
@@ -102,7 +117,7 @@
 <body>
 
   <!-- <h1>Ambient Notification Project</h1> -->
-  <h1>Market Produce</h1>
+  <h1 contenteditable="true">Market Produce</h1>
 
   <label for="itemInput">Item to Search:</label>
   <input type="text" id="itemInput" placeholder="Enter item">
@@ -115,20 +130,20 @@
   <button id="activateButton">add to Bought items list</button>
 
   <div class="content">
-    <h3>Click each item: (to buy or unbuy)</h3>
+    <h1 class="h3">Click each item: (to buy or unbuy)</h1>
 
-    <div id="boughtItems">
-      <h3>Bought Items</h3>
-      <div id="list"></div>
-    </div>
-    <div id="unboughtItems">
-      <h3>UnBought Items</h3>
-      <div id="list2"></div>
-    </div>
+      <div id="unboughtItems">
+        <h1 class="h3">UnBought Items</h1>
+        <div id="unboughtItemsList"></div>
+      </div>
+      <div id="boughtItems">
+        <h1 class="h3">Bought Items</h1>
+        <div id="boughtItemsList"></div>
+      </div>
   </div>
 
   <script>
-    let marketProduce = [
+    let marketProducts = [
       'Apples',
       'Bananas',
       'Oranges',
@@ -149,33 +164,62 @@
       'Potatoes',
       'Onions',
     ];
+    const boughtItemsList = document.getElementById('boughtItemsList')
+    const unboughtItemsList = document.getElementById('unboughtItemsList')
 
-    // let boughtItems = []
-    let unboughtItems = [...marketProduce]
+    let boughtItems = []
+    let unboughtItems = [...marketProducts]
 
-    const searchMarketProduce = (items) => ({
+    const searchMarketProducts = (items) => ({
       contains: item => items.filter(searchTerm => searchTerm.toLowerCase() !== item.toLowerCase())
     })
 
-    // unboughtItems = searchMarketProduce(unboughtItems).contains('Onions')
-    // unboughtItems = searchMarketProduce(unboughtItems).contains('Carrots')
-    // unboughtItems = searchMarketProduce(unboughtItems).contains('Spinach')
-    // unboughtItems = searchMarketProduce(unboughtItems).contains('Avocados')
-    // unboughtItems = searchMarketProduce(unboughtItems).contains('Potatoes')
-    unboughtItems = searchMarketProduce(unboughtItems).contains('Pineapples')
+    const isEmpty = (items, itemsList) => {
+      if (items.length === 0) {
+        itemsList.innerHTML = `<div>No items here!</div>`
+      }
+    }
 
-    console.log(unboughtItems)
+    const displayItems = () => {
+      boughtItemsList.innerHTML = ''
+      unboughtItemsList.innerHTML = ''
 
-    const getBoughtItems = marketProduce.filter(produce => {
-      return unboughtItems.indexOf(produce) === -1
-    })
-    console.log(getBoughtItems)
-    getBoughtItems.map((item) => {
-      document.getElementById('list').innerHTML += `<p>${item}</p>`
-    })
-    unboughtItems.map((item) => {
-      document.getElementById('list2').innerHTML += `<p>${item}</p>`
-    })
+      unboughtItems.forEach((item, i) => {
+        const paragraph = document.createElement('p')
+        paragraph.innerHTML = item;
+
+        unboughtItemsList.appendChild(paragraph)
+        paragraph.addEventListener('click', (e) => {
+          handlePurchase(item)
+        })
+      })
+      boughtItems.forEach((item, i) => {
+        const paragraph = document.createElement('p')
+        paragraph.innerHTML = item;
+
+        boughtItemsList.appendChild(paragraph)
+        paragraph.addEventListener('click', (e) => {
+          handleReject(item)
+        })
+      })
+
+      isEmpty(boughtItems, boughtItemsList)
+      isEmpty(unboughtItems, unboughtItemsList)
+    }
+    const handlePurchase = (prod) => {
+      unboughtItems = searchMarketProducts(unboughtItems).contains(prod)
+      boughtItems.push(prod)
+      displayItems()
+    }
+    const handleReject = (prod) => {
+      boughtItems = searchMarketProducts(boughtItems).contains(prod)
+      unboughtItems.push(prod)
+      displayItems()
+    }
+
+    displayItems()
+
+
   </script>
 
   <script>
