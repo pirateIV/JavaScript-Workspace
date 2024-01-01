@@ -1,0 +1,12 @@
+* {
+  font-family: 'Dejavu sans';
+  font-weight: 600;
+}
+
+label, textarea {
+  display: block;
+  margin: 20px 0;
+}
+textarea {
+  margin: 10px 0;
+}
